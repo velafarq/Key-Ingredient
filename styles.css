@@ -26,16 +26,18 @@ padding-top: 40px;
 
 header h1 {
   margin: 0;
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Quicksand', sans-serif;
   color: white;
   font-size: 70px;
+  letter-spacing: 2px;
   font-weight: normal;
 
 
 }
 
 header h2 {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
   color: white;
   padding-left: 30px;
   margin-bottom: 100px;
@@ -52,6 +54,7 @@ form {
   height: 40px;
   font-family: 'Quicksand', sans-serif;
   font-size: 20px;
+  padding-left: 10px;
 
 }
 
