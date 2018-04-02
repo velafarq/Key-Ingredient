@@ -1,0 +1,64 @@
+:root {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-style: sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+
+}
+header {
+
+background-image: url('tomatoes.jpg');
+width: 100vw;
+height: 100vh;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: fixed;
+padding-left: 40px;
+padding-top: 40px;
+
+}
+
+header h1 {
+  margin: 0;
+  font-family: 'Source Code Pro', monospace;
+  color: white;
+  font-size: 70px;
+  font-weight: normal;
+
+
+}
+
+header h2 {
+  font-family: 'Quicksand', sans-serif;
+  color: white;
+  padding-left: 30px;
+  margin-bottom: 100px;
+}
+
+form {
+  padding-left: 30px;
+
+}
+
+#search-word {
+  border-style: none;
+  width: 500px;
+  height: 40px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+
+}
+
+#search-button {
+  border-style: none;
+  width: 200px;
+  height: 40px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+}
