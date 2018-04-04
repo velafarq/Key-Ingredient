@@ -6,6 +6,9 @@ entreeBlock = document.getElementById('entree'),
 dessertBlock = document.getElementById('dessert'),
 searchWord = document.getElementById('search-word'),
 searchForm = document.getElementById('search-form'),
+drinkIngredients = document.getElementById('drink-ingredients'),
+drinkInfo = document.getElementById('drink-info'),
+drinkLink = document.getElementById('drink-link'),
 
 //API endpoint url variables//
 
@@ -17,7 +20,6 @@ searchForm.addEventListener('submit', getResults);
 function getResults(e) {
   e.preventDefault();
   let inputText = searchWord.value;
-
 
   fetchDrink(inputText);
 }
@@ -34,18 +36,40 @@ function fetchDrink(inputText) {
   fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Beverages&requirePictures=true`)
   .then(res => res.json())
   .then(data => {
+    recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName);
+    ingredientList(data.matches[0].ingredients);
+    recipeLink('https://www.yummly.com/recipe/${data.matches[0].id}');
+
     let output = '';
     output += `
   <img src='${data.matches[0].imageUrlsBySize['90']}'>
   <h3>${data.matches[0].recipeName}<h3>
   <h4>Ingredients</h4>
-  <p>${data.matches[0].ingredients}</p>
-  <a href='https://www.yummly.com/recipe/${data.matches[0].id}' target='_blank'>Take me to the recipe</a>`;
+  <p></p>
+  <a href='https://www.yummly.com/recipe/${data.matches[0].id}' target='_blank'>
+  Take me to the recipe</a>`;
 
     drinkBlock.innerHTML = output;
 
   })
   .catch(err => console.log(err));
 
+}
 
+function ingredientList(ingredients) {
+  drinkIngredients.innerHTML = ingredients.map(x => `<li>${x}</li>`);
+}
+
+function recipeInfo(imgSrc, heading) {
+  let output = '';
+  output += `<img src='${imgSrc}'>
+  <h3>${heading}<h3>
+  <h4>Ingredients</h4>`;
+  drinkInfo.innerHTML = output;
+}
+
+function recipeLink(link) {
+  let output = `<a href='${link}' target='_blank'>
+    Take me to the recipe</a>`;
+    drinkLink.innerHTML = output;
 }
