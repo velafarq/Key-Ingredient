@@ -76,7 +76,7 @@ function fetchAppetizer(inputText) {
 .then(data => {
     recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName, appInfo);
     ingredientList(data.matches[0].ingredients, appIngredients);
-    recipeLink('https://www.yummly.com/recipe/${data.matches[0].id}', appLink);
+    recipeLink(`https://www.yummly.com/recipe/${data.matches[0].id}`, appLink);
   })
 .catch(err => console.log(err));
 }
@@ -89,7 +89,7 @@ function fetchEntree(inputText) {
   .then(data => {
       recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName, entreeInfo);
       ingredientList(data.matches[0].ingredients, entreeIngredients);
-      recipeLink('https://www.yummly.com/recipe/${data.matches[0].id}', entreeLink);
+      recipeLink(`https://www.yummly.com/recipe/${data.matches[0].id}`, entreeLink);
     })
   .catch(err => console.log(err));
 }
@@ -101,7 +101,7 @@ function fetchDessert(inputText) {
   .then(data => {
       recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName, dessertInfo);
       ingredientList(data.matches[0].ingredients, dessertIngredients);
-      recipeLink('https://www.yummly.com/recipe/${data.matches[0].id}', dessertLink);
+      recipeLink(`https://www.yummly.com/recipe/${data.matches[0].id}`, dessertLink);
     })
   .catch(err => console.log(err));
 }
