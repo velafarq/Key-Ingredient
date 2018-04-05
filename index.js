@@ -1,75 +1,124 @@
 //variables to access DOM//
-
-const drinkBlock = document.getElementById('drink'),
-appetizerBlock = document.getElementById('appetizer'),
-entreeBlock = document.getElementById('entree'),
-dessertBlock = document.getElementById('dessert'),
-searchWord = document.getElementById('search-word'),
+const searchWord = document.getElementById('search-word'),
 searchForm = document.getElementById('search-form'),
-drinkIngredients = document.getElementById('drink-ingredients'),
+mainArea = document.getElementById('main'),
+
+//drink//
+drinkBlock = document.getElementById('drink'),
 drinkInfo = document.getElementById('drink-info'),
+drinkIngredients = document.getElementById('drink-ingredients'),
 drinkLink = document.getElementById('drink-link'),
+
+//appetizer//
+appetizerBlock = document.getElementById('appetizer'),
+appInfo = document.getElementById('app-info'),
+appIngredients = document.getElementById('app-ingredients'),
+appLink = document.getElementById('app-link'),
+
+//entree//
+entreeBlock = document.getElementById('entree'),
+entreeInfo = document.getElementById('entree-info'),
+entreeIngredients = document.getElementById('entree-ingredients'),
+entreeLink = document.getElementById('entree-link'),
+
+//dessert//
+dessertBlock = document.getElementById('dessert'),
+dessertInfo = document.getElementById('dessert-info'),
+dessertIngredients = document.getElementById('dessert-ingredients'),
+dessertLink = document.getElementById('dessert-link'),
 
 //API endpoint url variables//
 
 yummlyUrl = 'https://api.yummly.com/v1',
-edamamUrl = 'https://api.edamam.com/search';
+edamamUrl = 'https://api.edamam.com/search'; //?q=${inputText}&app_id=fddbf388&app_key=87b9baad36b2f49560c619843a13a7c0';
 
-searchForm.addEventListener('submit', getResults);
+// basic templates for each course //
 
-function getResults(e) {
-  e.preventDefault();
-  let inputText = searchWord.value;
 
-  fetchDrink(inputText);
+
+function recipeInfo(imgSrc, heading, content) {
+  let output = '';
+  output += `<img src='${imgSrc}'>
+  <h3>${heading}<h3>
+  <h4>Ingredients</h4>`;
+  content.innerHTML = output;
 }
 
-function fetchAppetizer(inputText) {
-  fetch(`${edamamUrl}?q=${inputText}&app_id=fddbf388&app_key=
-87b9baad36b2f49560c619843a13a7c0`)
-.then(res => res.json())
-.then(data => console.log(data))
-.catch(err => console.log(err));
+function ingredientList(ingredients, content) {
+  content.innerHTML = ingredients.map(x => `<li>${x}</li>`);
 }
+
+function recipeLink(link, content) {
+  let output = `<a href='${link}' target='_blank'>
+    Take me to the recipe</a>`;
+  content.innerHTML = output;
+}
+
+//end course templates//
+
+// fetch beverage information //
 
 function fetchDrink(inputText) {
   fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Beverages&requirePictures=true`)
   .then(res => res.json())
   .then(data => {
-    recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName);
-    ingredientList(data.matches[0].ingredients);
-    recipeLink('https://www.yummly.com/recipe/${data.matches[0].id}');
+      recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName, drinkInfo);
+      ingredientList(data.matches[0].ingredients, drinkIngredients);
+      recipeLink('https://www.yummly.com/recipe/${data.matches[0].id}', drinkLink);
+    })
 
-    let output = '';
-    output += `
-  <img src='${data.matches[0].imageUrlsBySize['90']}'>
-  <h3>${data.matches[0].recipeName}<h3>
-  <h4>Ingredients</h4>
-  <p></p>
-  <a href='https://www.yummly.com/recipe/${data.matches[0].id}' target='_blank'>
-  Take me to the recipe</a>`;
-
-    drinkBlock.innerHTML = output;
-
-  })
   .catch(err => console.log(err));
-
 }
 
-function ingredientList(ingredients) {
-  drinkIngredients.innerHTML = ingredients.map(x => `<li>${x}</li>`);
+//  fetch appetizer information //
+
+function fetchAppetizer(inputText) {
+fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Appetizers&requirePictures=true`)
+.then(res => res.json())
+.then(data => {
+    recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName, appInfo);
+    ingredientList(data.matches[0].ingredients, appIngredients);
+    recipeLink('https://www.yummly.com/recipe/${data.matches[0].id}', appLink);
+  })
+.catch(err => console.log(err));
 }
 
-function recipeInfo(imgSrc, heading) {
-  let output = '';
-  output += `<img src='${imgSrc}'>
-  <h3>${heading}<h3>
-  <h4>Ingredients</h4>`;
-  drinkInfo.innerHTML = output;
+// fetch entree information //
+
+function fetchEntree(inputText) {
+  fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Main Dishes&requirePictures=true`)
+  .then(res => res.json())
+  .then(data => {
+      recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName, entreeInfo);
+      ingredientList(data.matches[0].ingredients, entreeIngredients);
+      recipeLink('https://www.yummly.com/recipe/${data.matches[0].id}', entreeLink);
+    })
+  .catch(err => console.log(err));
 }
 
-function recipeLink(link) {
-  let output = `<a href='${link}' target='_blank'>
-    Take me to the recipe</a>`;
-    drinkLink.innerHTML = output;
+// fetch dessert information //
+function fetchDessert(inputText) {
+  fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Desserts&requirePictures=true`)
+  .then(res => res.json())
+  .then(data => {
+      recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName, dessertInfo);
+      ingredientList(data.matches[0].ingredients, dessertIngredients);
+      recipeLink('https://www.yummly.com/recipe/${data.matches[0].id}', dessertLink);
+    })
+  .catch(err => console.log(err));
+}
+
+//  run everything on form submission//
+searchForm.addEventListener('submit', getResults);
+
+function getResults(e) {
+  e.preventDefault();
+
+  let inputText = searchWord.value;
+
+  fetchDrink(inputText);
+  fetchAppetizer(inputText);
+  fetchEntree(inputText);
+  fetchDessert(inputText);
+
 }
