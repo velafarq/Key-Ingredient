@@ -8,10 +8,12 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
 
 }
 header {
-
+box-sizing: border-box;
 background-image: url('tomatoes.jpg');
 width: 100vw;
 height: 100vh;
@@ -26,6 +28,7 @@ padding-top: 40px;
 
 header h1 {
   margin: 0;
+  padding-top: 300px;
   font-family: 'Quicksand', sans-serif;
   color: white;
   font-size: 70px;
@@ -64,4 +67,45 @@ form {
   height: 40px;
   font-family: 'Quicksand', sans-serif;
   font-size: 20px;
+}
+
+/* course display */
+
+#main {
+  box-sizing: border-box;
+  padding: 40px 100px;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: space-between;
+}
+
+ .recipe-block {
+  background-color: darkgray;
+  box-shadow: 2px 2px 4px 0px rgba(136,136,136,1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  max-height: 600px;
+  min-height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 300px;
+  min-width: 300px;
+
+}
+
+.recipe-image {
+  border-radius: 50%;
+  box-shadow: 2px 2px 4px 0px rgba(136,136,136,1);
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.recipe-block ul {
+  padding: 0;
+}
+.recipe-block li{
+  list-style: none;
 }

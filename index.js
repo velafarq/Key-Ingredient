@@ -34,11 +34,9 @@ edamamUrl = 'https://api.edamam.com/search'; //?q=${inputText}&app_id=fddbf388&a
 
 // basic templates for each course //
 
-
-
 function recipeInfo(imgSrc, heading, content) {
   let output = '';
-  output += `<img src='${imgSrc}'>
+  output += `<img src='${imgSrc}' class='recipe-image'>
   <h3>${heading}<h3>
   <h4>Ingredients</h4>`;
   content.innerHTML = output;
@@ -64,7 +62,7 @@ function fetchDrink(inputText) {
   .then(data => {
       recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName, drinkInfo);
       ingredientList(data.matches[0].ingredients, drinkIngredients);
-      recipeLink('https://www.yummly.com/recipe/${data.matches[0].id}', drinkLink);
+      recipeLink(`https://www.yummly.com/recipe/${data.matches[0].id}`, drinkLink);
     })
 
   .catch(err => console.log(err));
@@ -73,7 +71,7 @@ function fetchDrink(inputText) {
 //  fetch appetizer information //
 
 function fetchAppetizer(inputText) {
-fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Appetizers&requirePictures=true`)
+  fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Appetizers&requirePictures=true`)
 .then(res => res.json())
 .then(data => {
     recipeInfo(data.matches[0].imageUrlsBySize['90'], data.matches[0].recipeName, appInfo);

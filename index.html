@@ -13,7 +13,7 @@
 <body>
 <header>
   <h1>Key Ingredient</h1>
-  <h2>you pick the ingredient. we plan the meal.</h2>
+  <h2>you pick the ingredient. we inspire the meals.</h2>
   <form id='search-form'>
     <div>
       <input type='search' id='search-word' name='q' placeholder='be adventurous! e.g. pomegranate'>
@@ -22,28 +22,34 @@
   </form>
 </header>
 <main id='main'>
-  <div id='drink'>
+
+  <div class='recipe-block' id='drink'>
+    <h2>Beverage</h2>
     <div id='drink-info'></div>
     <ul id='drink-ingredients'></ul>
     <div id='drink-link'></div>
-
   </div>
-  <div id='appetizer'>
+
+  <div class='recipe-block' id='appetizer'>
+    <h2>Appetizer</h2>
     <div id='app-info'></div>
-    <div id='app-ingredients'></div>
+    <ul id='app-ingredients'></ul>
     <div id='app-link'></div>
+  </div>
 
 
-  <div id='entree'>
+  <div class='recipe-block' id='entree'>
+    <h2>Main Dish</h2>
     <div id="entree-info"></div>
-    <div id="entree-ingredients"></div>
+    <ul id="entree-ingredients"></ul>
     <div id="entree-link"></div>
   </div>
 
 
-  <div id='dessert'>
+  <div class='recipe-block' id='dessert'>
+    <h2>Dessert</h2>
     <div id="dessert-info"></div>
-    <div id="dessert-ingredients"></div>
+    <ul id="dessert-ingredients"></ul>
     <div id="dessert-link"></div>
 
   </div>
