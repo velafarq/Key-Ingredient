@@ -37,8 +37,9 @@ edamamUrl = 'https://api.edamam.com/search'; //?q=${inputText}&app_id=fddbf388&a
 function recipeInfo(imgSrc, heading, content) {
   let output = '';
   output += `<img src='${imgSrc}' class='recipe-image'>
+  <div>
   <h3>${heading}<h3>
-  <h4>Ingredients</h4>`;
+  <h4>View ingredients</h4></div>`;
   content.innerHTML = output;
 }
 
