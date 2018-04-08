@@ -75,7 +75,7 @@ form {
 
 #main {
   box-sizing: border-box;
-  padding: 40px 100px;
+  
   display: flex;
   flex-direction: row;
   width: 100vw;
@@ -83,59 +83,7 @@ form {
   justify-content: space-between;
 }
 
- /* .recipe-block {
-  background-color: #FFFFFF;
-  box-shadow: 2px 2px 4px 0px rgba(136,136,136,1);
-  border: 10px solid rgba(255,255,255,.5);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  max-height: 100%;
-  min-height: 50%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-width: 300px;
-  min-width: 300px; */
 
-/* } */
-
-#drink-info {
-    border-radius:10px;
-  width: 400px;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 5px;
-  padding-right: 5px;
-  box-shadow: 2px 2px 4px 0px rgba(136,136,136,1);
-  background-color: white;
-    box-sizing: border-box;
-
-}
-
-#drink-info > div {
-  box-sizing: border-box;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-left: 20px;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
-
-  height: 100%
-}
-
-
-#drink-info div h4 {
-
-  text-align: right;
-
-}
-#drink-info h3, #drink-info h4 {
-  margin: 0;
-  padding: 0;
-}
 
 
 .recipe-image {
@@ -165,4 +113,10 @@ form {
 .last-block {
   display: flex;
   align-items: flex-end;
+}
+#view-drink.show {
+  display: block
+}
+#view-drink {
+  display: none;
 }
