@@ -75,7 +75,7 @@ form {
 
 #main {
   box-sizing: border-box;
-  
+
   display: flex;
   flex-direction: row;
   width: 100vw;
@@ -83,18 +83,10 @@ form {
   justify-content: space-between;
 }
 
+.main-image {
+  border-radius: 3px;
+}
 
-
-
-.recipe-image {
-  border-radius:10px;
-  display: block;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 90px;
-  width: 90px;
 
 
 }

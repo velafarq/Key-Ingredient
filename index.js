@@ -73,10 +73,10 @@ function fetchDrink(inputText) {
   fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Beverages&requirePictures=true`)
   .then(res => res.json())
   .then(data => {
-      fetchRecipePicture(data.matches[0].id, bevPic);
+      fetchRecipePicture(data.matches[0].id, bevPic, drinkLink);
       recipeInfo(data.matches[0].recipeName, drinkInfo,);
       ingredientList(data.matches[0].ingredients, drinkIngredients);
-      recipeLink(`https://www.yummly.com/recipe/${data.matches[0].id}`, drinkLink);
+
     })
 
   .catch(err => console.log(err));
@@ -88,10 +88,10 @@ function fetchAppetizer(inputText) {
   fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Appetizers&requirePictures=true`)
 .then(res => res.json())
 .then(data => {
-    fetchRecipePicture(data.matches[0].id, appPic);
+    fetchRecipePicture(data.matches[0].id, appPic, appLink);
     recipeInfo(data.matches[0].recipeName, appInfo);
     ingredientList(data.matches[0].ingredients, appIngredients);
-    recipeLink(`https://www.yummly.com/recipe/${data.matches[0].id}`, appLink);
+
   })
 .catch(err => console.log(err));
 }
@@ -102,10 +102,10 @@ function fetchEntree(inputText) {
   fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Main Dishes&requirePictures=true`)
   .then(res => res.json())
   .then(data => {
-      fetchRecipePicture(data.matches[0].id, entreePic);
+      fetchRecipePicture(data.matches[0].id, entreePic, entreeLink);
       recipeInfo(data.matches[0].recipeName, entreeInfo);
       ingredientList(data.matches[0].ingredients, entreeIngredients);
-      recipeLink(`https://www.yummly.com/recipe/${data.matches[0].id}`, entreeLink);
+
     })
   .catch(err => console.log(err));
 }
@@ -115,15 +115,14 @@ function fetchDessert(inputText) {
   fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Desserts&requirePictures=true`)
   .then(res => res.json())
   .then(data => {
-      fetchRecipePicture(data.matches[0].id, dessertPic);
+      fetchRecipePicture(data.matches[0].id, dessertPic, dessertLink);
       recipeInfo(data.matches[0].recipeName, dessertInfo);
       ingredientList(data.matches[0].ingredients, dessertIngredients);
-      recipeLink(`https://www.yummly.com/recipe/${data.matches[0].id}`, dessertLink);
     })
   .catch(err => console.log(err));
 }
 
-function fetchRecipePicture(recipeId, content) {
+function fetchRecipePicture(recipeId, content, linkContent) {
   fetch(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142`)
   .then(res => res.json())
   .then(data => {
@@ -133,6 +132,9 @@ function fetchRecipePicture(recipeId, content) {
     let output = '';
     output += `<img src=${id}>`;
     content.innerHTML = output;
+
+    recipeLink(data.source.sourceRecipeUrl, linkContent);
+
   })
   .catch(err => console.log(err));
 }
