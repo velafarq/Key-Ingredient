@@ -17,8 +17,8 @@
   <h2>You pick the ingredient. We inspire the meals.</h2>
   <form id='search-form'>
     <div>
-      <input type='search' id='search-word' name='q' placeholder='be adventurous! e.g. pomegranate'>
-      <button type='submit' id='search-button'>Search</button>
+      <input type='search' id='search-word' name='q' placeholder='be adventurous! e.g. pomegranate' autocomplete="off">
+      <button type='submit' id='search-button' onClick="document.getElementById('main').scrollIntoView();">Search</button>
     </div>
   </form>
 </header>
@@ -30,9 +30,8 @@
 <!--BEVERAGE -->
   <div class='recipe-block' id='drink'>
     <h2>Beverage</h2>
-    <div id='bev-pic' class='main-image'></div>
+    <div id='bev-pic'></div>
     <div id='drink-info'></div>
-
     <div id='view-drink'>
     <ul id='drink-ingredients'></ul>
   </div>
@@ -44,7 +43,7 @@
 <!--APPETIZER-->
   <div class='recipe-block' id='appetizer'>
     <h2>Appetizer</h2>
-    <div id='app-pic' class='main-image'></div>
+    <div id='app-pic'></div>
     <div id='app-info'></div>
 
     <div id='view-app'>
@@ -57,7 +56,7 @@
 <!--ENTREE-->
   <div class='recipe-block' id='entree'>
     <h2>Main Dish</h2>
-    <div id='entree-pic' class='main-image'></div>
+    <div id='entree-pic'></div>
     <div id="entree-info"></div>
     <div id="view-ent">
     <ul id="entree-ingredients"></ul>
@@ -68,7 +67,7 @@
 <!--DESSERT-->
   <div class='recipe-block' id='dessert'>
     <h2>Dessert</h2>
-    <div id='dessert-pic' class='main-image'></div>
+    <div id='dessert-pic'></div>
     <div id="dessert-info"></div>
     <div id="view-dess">
     <ul id="dessert-ingredients"></ul>

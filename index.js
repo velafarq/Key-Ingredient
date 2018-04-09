@@ -45,12 +45,12 @@ edamamUrl = 'https://api.edamam.com/search'; //?q=${inputText}&app_id=fddbf388&a
 
 // basic templates for each course //
 
-function recipeInfo(heading, content, id) {
+function recipeInfo(heading, content) {
   let output = '';
   output += `
-  <div>
+  <div class='recipe-title'>
   <h3>${heading}<h3>
-  <button onclick='displayIngredients()' id='view-ingredients'>View ingredients</button></div>`;
+  <button onclick='displayIngredients(${content}-ingredients)' id='${content}-ingredients'>View ingredients</button></div>`;
   content.innerHTML = output;
 }
 
@@ -60,7 +60,7 @@ function ingredientList(ingredients, content) {
 
 function recipeLink(link, content) {
   let output = `<a href='${link}' target='_blank'>
-    Take me to the recipe</a>`;
+    View recipe</a>`;
   content.innerHTML = output;
 }
 
@@ -74,7 +74,7 @@ function fetchDrink(inputText) {
   .then(res => res.json())
   .then(data => {
       fetchRecipePicture(data.matches[0].id, bevPic, drinkLink);
-      recipeInfo(data.matches[0].recipeName, drinkInfo,);
+      recipeInfo(data.matches[0].recipeName, drinkInfo);
       ingredientList(data.matches[0].ingredients, drinkIngredients);
 
     })
@@ -130,7 +130,7 @@ function fetchRecipePicture(recipeId, content, linkContent) {
 
     const id = data.images[0].imageUrlsBySize['360'];
     let output = '';
-    output += `<img src=${id}>`;
+    output += `<img src=${id} class='main-image'>`;
     content.innerHTML = output;
 
     recipeLink(data.source.sourceRecipeUrl, linkContent);
@@ -146,15 +146,16 @@ function getResults(e) {
   e.preventDefault();
 
   let inputText = searchWord.value;
-
+  searchForm.reset();
   fetchDrink(inputText);
   fetchAppetizer(inputText);
   fetchEntree(inputText);
   fetchDessert(inputText);
+  mainArea.style.display = 'flex';
 }
 
-function displayIngredients() {
-  viewDrink.classList.toggle('show');
+function displayIngredients(content) {
+  document.getElementById(content).classList.toggle('show');
   console.log('this ran');
 }
 

@@ -5,13 +5,23 @@
   font-style: sans-serif;
 }
 
+
 body {
   padding: 0;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  color: #606060;
+  color: white;
   background-color: #CCC6BC;
 
+}
+
+a {
+  text-decoration: none;
+  color: #262626;
+  font-weight: 600;
+}
+a:hover{
+  color: purple;
 }
 header {
 box-sizing: border-box;
@@ -74,9 +84,11 @@ form {
 /* course display */
 
 #main {
+  margin-top: 50px;
   box-sizing: border-box;
-
-  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: none;
   flex-direction: row;
   width: 100vw;
   height: 80vh;
@@ -84,11 +96,16 @@ form {
 }
 
 .main-image {
+  border: solid 1px #e6e6e6;
   border-radius: 3px;
+-webkit-box-shadow: 0 0 5px rgba(0,0,0,.0975);
+  box-shadow: 0 0 5px rgba(0,0,0,.0975);
 }
 
+.recipe-title {
+  flex-wrap: wrap;
 
-
+  max-width: 360px;
 }
 
 .recipe-block h2 {
@@ -106,9 +123,9 @@ form {
   display: flex;
   align-items: flex-end;
 }
-#view-drink.show {
+
+#drinkInfo-ingredients.show {
   display: block
 }
-#view-drink {
+#drinkInfo-ingredients {
   display: none;
-}
