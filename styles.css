@@ -26,6 +26,8 @@ a:hover{
 header {
 box-sizing: border-box;
 background-image: url('tomatoes.jpg');
+background-color: ;
+background-blend-mode: multiply;
 width: 100vw;
 height: 100vh;
 background-position: center;
@@ -33,21 +35,25 @@ background-size: cover;
 background-repeat: no-repeat;
 background-attachment: fixed;
 padding-left: 40px;
+padding-right: 40px;
 padding-top: 40px;
-
+display: flex;
+flex-direction: column;
 }
+
+
 
 header h1 {
   margin: 0;
-  padding-top: 300px;
+  padding-top: 40vh;
   font-family: 'Quicksand', sans-serif;
   color: white;
   font-size: 70px;
   letter-spacing: 2px;
   font-weight: normal;
 
-
 }
+
 
 header h2 {
   font-family: 'Montserrat', sans-serif;
@@ -55,30 +61,71 @@ header h2 {
   color: white;
   padding-left: 30px;
   margin-bottom: 100px;
+  size: 60px;
 }
 
 form {
-  padding-left: 30px;
+
 
 }
 
 #search-word {
   border-style: none;
+  border: 2px solid #557B5A;
   width: 500px;
   height: 40px;
   font-family: 'Quicksand', sans-serif;
   font-size: 20px;
   padding-left: 10px;
+  border-radius: 5px;
+  color:#557B5A;
 
 }
 
 #search-button {
   border-style: none;
+  border-radius: 5px;
   width: 200px;
   height: 40px;
   font-family: 'Quicksand', sans-serif;
   font-size: 20px;
-  color: #606060;
+  background-color: #557B5A;
+  color: white;
+  margin-top: 10px;
+}
+
+
+@media only screen and (max-width: 650px){
+  header {
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+  }
+  header h1{
+    margin: 0;
+    padding: 0;
+
+  }
+
+  header h2 {
+
+padding: 0;
+
+  }
+  #search-word {
+width: 100vw;
+height: 80px;
+  }
+
+  #search-button {
+width: 100vw;
+height: 80px
+  }
+  #search-form {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 /* course display */
@@ -89,11 +136,23 @@ form {
   padding-left: 20px;
   padding-right: 20px;
   display: none;
-  flex-direction: row;
   width: 100vw;
   height: 80vh;
   justify-content: space-between;
 }
+
+@media only screen and (min-width: 1024px) {
+  #main {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width: 1023px){
+  #main {
+    flex-direction: column;
+  }
+}
+
 
 .main-image {
   border: solid 1px #e6e6e6;

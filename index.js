@@ -45,12 +45,12 @@ edamamUrl = 'https://api.edamam.com/search'; //?q=${inputText}&app_id=fddbf388&a
 
 // basic templates for each course //
 
-function recipeInfo(heading, content) {
+function recipeInfo(heading, id, content) {
   let output = '';
   output += `
   <div class='recipe-title'>
   <h3>${heading}<h3>
-  <button onclick='displayIngredients(${content}-ingredients)' id='${content}-ingredients'>View ingredients</button></div>`;
+  <button id='${id}')'>View ingredients</button></div>`;
   content.innerHTML = output;
 }
 
@@ -74,7 +74,7 @@ function fetchDrink(inputText) {
   .then(res => res.json())
   .then(data => {
       fetchRecipePicture(data.matches[0].id, bevPic, drinkLink);
-      recipeInfo(data.matches[0].recipeName, drinkInfo);
+      recipeInfo(data.matches[0].recipeName, 'drink-button', drinkInfo);
       ingredientList(data.matches[0].ingredients, drinkIngredients);
 
     })
@@ -89,9 +89,8 @@ function fetchAppetizer(inputText) {
 .then(res => res.json())
 .then(data => {
     fetchRecipePicture(data.matches[0].id, appPic, appLink);
-    recipeInfo(data.matches[0].recipeName, appInfo);
+    recipeInfo(data.matches[0].recipeName, 'app-button', appInfo);
     ingredientList(data.matches[0].ingredients, appIngredients);
-
   })
 .catch(err => console.log(err));
 }
@@ -103,7 +102,7 @@ function fetchEntree(inputText) {
   .then(res => res.json())
   .then(data => {
       fetchRecipePicture(data.matches[0].id, entreePic, entreeLink);
-      recipeInfo(data.matches[0].recipeName, entreeInfo);
+      recipeInfo(data.matches[0].recipeName, 'entree-button', entreeInfo);
       ingredientList(data.matches[0].ingredients, entreeIngredients);
 
     })
@@ -116,7 +115,7 @@ function fetchDessert(inputText) {
   .then(res => res.json())
   .then(data => {
       fetchRecipePicture(data.matches[0].id, dessertPic, dessertLink);
-      recipeInfo(data.matches[0].recipeName, dessertInfo);
+      recipeInfo(data.matches[0].recipeName, 'dessert-button', dessertInfo);
       ingredientList(data.matches[0].ingredients, dessertIngredients);
     })
   .catch(err => console.log(err));
@@ -145,20 +144,32 @@ searchForm.addEventListener('submit', getResults);
 function getResults(e) {
   e.preventDefault();
 
+  mainArea.style.display = 'flex';
+
   let inputText = searchWord.value;
   searchForm.reset();
   fetchDrink(inputText);
   fetchAppetizer(inputText);
   fetchEntree(inputText);
   fetchDessert(inputText);
-  mainArea.style.display = 'flex';
-}
-
-function displayIngredients(content) {
-  document.getElementById(content).classList.toggle('show');
-  console.log('this ran');
+  fetchPairingInfo();
 }
 
 // function displayIngredients() {
 //   viewDrink.classList.toggle('show');
 // }
+
+
+function fetchPairingInfo() {
+  fetch('https://api.foodpairing.com/ingredients/4243/pairings?q=tahini', {
+    headers: {
+      'x-application-id': 'dd34d7be',
+      'x-application-key': '7cb083d0ade11881caf75d5cd7bb256c',
+      Accept: 'application/json',
+    },
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+
+}
