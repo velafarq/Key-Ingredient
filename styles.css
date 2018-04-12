@@ -9,19 +9,20 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
   color: white;
-  background-color: #CCC6BC;
+  background-color: #233237;
 
 }
 
 a {
   text-decoration: none;
-  color: #262626;
+  color: white;
   font-weight: 600;
 }
 a:hover{
-  color: purple;
+  color: tomato;
 }
 header {
 box-sizing: border-box;
@@ -46,17 +47,19 @@ flex-direction: column;
 header h1 {
   margin: 0;
   padding-top: 40vh;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Julius Sans One', sans-serif;
+  /* font-family: 'Quicksand', sans-serif; */
   color: white;
   font-size: 70px;
   letter-spacing: 2px;
   font-weight: normal;
+  text-transform: uppercase;
 
 }
 
 
 header h2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: normal;
   color: white;
   padding-left: 30px;
@@ -71,14 +74,14 @@ form {
 
 #search-word {
   border-style: none;
-  border: 2px solid #557B5A;
+  border: 2px solid #233237;
   width: 500px;
   height: 40px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   padding-left: 10px;
   border-radius: 5px;
-  color:#557B5A;
+  color:#233237;
 
 }
 
@@ -89,7 +92,7 @@ form {
   height: 40px;
   font-family: 'Quicksand', sans-serif;
   font-size: 20px;
-  background-color: #557B5A;
+  background-color: #233237;
   color: white;
   margin-top: 10px;
 }
@@ -150,6 +153,11 @@ height: 80px
 @media only screen and (max-width: 1023px){
   #main {
     flex-direction: column;
+
+  }
+  #bev-pic, #app-pic, #entree-pic, #dessert-pic {
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -176,12 +184,13 @@ height: 80px
 .recipe-title {
   height: 60px;
   max-width: 360px;
-  
+
 }
 
 .recipe-title h3 {
   flex-wrap: wrap;
   max-width: 360px;
+  font-weight: normal;
 
   margin-top: 0;
   padding-top: 0;
@@ -190,6 +199,7 @@ height: 80px
 
 .recipe-block h2 {
   text-align: center;
+  font-weight: normal;
 }
 
 .recipe-block ul {

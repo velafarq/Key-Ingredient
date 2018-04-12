@@ -51,7 +51,7 @@ function recipeInfo(heading, id, content) {
   <div class='recipe-title'>
   <h3>${heading}<h3>
   </div>
-  <button id='${id}')'>View ingredients</button></div>`;
+  <button id='${id}')'>Show ingredients</button></div>`;
   content.innerHTML = output;
 }
 
