@@ -137,7 +137,7 @@ height: 80px
   padding-right: 20px;
   display: none;
   width: 100vw;
-  height: 80vh;
+  /* height: 80vh; */
   justify-content: space-between;
 }
 
@@ -153,18 +153,39 @@ height: 80px
   }
 }
 
+#bev-pic, #app-pic, #entree-pic, #dessert-pic {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-height: 360px;
 
+  max-width: 360px;
+
+
+}
 .main-image {
-  border: solid 1px #e6e6e6;
+
+
   border-radius: 3px;
 -webkit-box-shadow: 0 0 5px rgba(0,0,0,.0975);
   box-shadow: 0 0 5px rgba(0,0,0,.0975);
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .recipe-title {
-  flex-wrap: wrap;
-
+  height: 60px;
   max-width: 360px;
+  
+}
+
+.recipe-title h3 {
+  flex-wrap: wrap;
+  max-width: 360px;
+
+  margin-top: 0;
+  padding-top: 0;
+
 }
 
 .recipe-block h2 {

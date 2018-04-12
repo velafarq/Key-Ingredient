@@ -50,12 +50,15 @@ function recipeInfo(heading, id, content) {
   output += `
   <div class='recipe-title'>
   <h3>${heading}<h3>
+  </div>
   <button id='${id}')'>View ingredients</button></div>`;
   content.innerHTML = output;
 }
 
 function ingredientList(ingredients, content) {
-  content.innerHTML = ingredients.map(x => `<li>${x}</li>`);
+  let output = '';
+  output = ingredients.map(x => `<li>${x}</li>`).join(',').replace(/,/g, '');
+  content.innerHTML = output;
 }
 
 function recipeLink(link, content) {
@@ -65,7 +68,6 @@ function recipeLink(link, content) {
 }
 
 //end course templates//
-
 
 // fetch beverage information //
 
@@ -121,6 +123,7 @@ function fetchDessert(inputText) {
   .catch(err => console.log(err));
 }
 
+// fetch big recipe picture //
 function fetchRecipePicture(recipeId, content, linkContent) {
   fetch(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142`)
   .then(res => res.json())
@@ -132,6 +135,7 @@ function fetchRecipePicture(recipeId, content, linkContent) {
     output += `<img src=${id} class='main-image'>`;
     content.innerHTML = output;
 
+    //also using this api to fetch the direct link to the recipe, instead of going through yummly//
     recipeLink(data.source.sourceRecipeUrl, linkContent);
 
   })
