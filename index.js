@@ -1,5 +1,5 @@
 
-//API endpoint url variables//
+//API endpoint url variable//
 
 yummlyUrl = 'https://api.yummly.com/v1';
 
@@ -29,10 +29,14 @@ function recipeLink(link, content) {
 
 //end course templates//
 
+const generateURL = (inputText, category) => {
+  return `${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-${category}&requirePictures=true`
+}
+
 // fetch beverage information //
 
 function fetchDrink(inputText) {
-  fetch(`${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-Beverages&requirePictures=true`)
+  fetch(generateURL(inputText, 'Beverages'))
   .then(res => res.json())
   .then(data => {
       fetchRecipePicture(data.matches[0].id, bevPic, drinkLink);
@@ -47,9 +51,9 @@ function fetchDrink(inputText) {
 //  fetch appetizer information //
 
 function fetchAppetizer(inputText) {
-  fetch(`${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-Appetizers&requirePictures=true`)
-.then(res => res.json())
+  fetch(generateURL(inputText, 'Appetizers'))
 .then(data => {
+    console.log(data);
     fetchRecipePicture(data.matches[0].id, appPic, appLink);
     recipeInfo(data.matches[0].recipeName, 'app-button', appInfo);
     ingredientList(data.matches[0].ingredients, appIngredients);
@@ -60,7 +64,7 @@ function fetchAppetizer(inputText) {
 // fetch entree information //
 
 function fetchEntree(inputText) {
-  fetch(`${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-Main Dishes&requirePictures=true`)
+  fetch(generateURL(inputText, 'Main Dishes'))
   .then(res => res.json())
   .then(data => {
       fetchRecipePicture(data.matches[0].id, entreePic, entreeLink);
@@ -73,7 +77,7 @@ function fetchEntree(inputText) {
 
 // fetch dessert information //
 function fetchDessert(inputText) {
-  fetch(`${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-Desserts&requirePictures=true`)
+  fetch(generateURL(inputText, 'Desserts'))
   .then(res => res.json())
   .then(data => {
       fetchRecipePicture(data.matches[0].id, dessertPic, dessertLink);
@@ -116,24 +120,4 @@ function getResults(e) {
   fetchAppetizer(inputText);
   fetchEntree(inputText);
   fetchDessert(inputText);
-  fetchPairingInfo();
-}
-
-// function displayIngredients() {
-//   viewDrink.classList.toggle('show');
-// }
-
-
-function fetchPairingInfo() {
-  fetch('https://api.foodpairing.com/ingredients/4243/pairings?q=tahini', {
-    headers: {
-      'x-application-id': 'dd34d7be',
-      'x-application-key': '7cb083d0ade11881caf75d5cd7bb256c',
-      Accept: 'application/json',
-    },
-  })
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(err => console.log(err));
-
 }
