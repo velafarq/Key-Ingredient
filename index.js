@@ -1,43 +1,4 @@
 
-
-//variables to access DOM//
-const searchWord = document.getElementById('search-word'),
-searchForm = document.getElementById('search-form'),
-mainArea = document.getElementById('main'),
-viewIngredients = document.getElementById('view-ingredients'),
-
-//drink//
-drinkBlock = document.getElementById('drink'),
-drinkInfo = document.getElementById('drink-info'),
-drinkIngredients = document.getElementById('drink-ingredients'),
-drinkLink = document.getElementById('drink-link'),
-viewDrink = document.getElementById('view-drink'),
-bevPic = document.getElementById('bev-pic'),
-
-//appetizer//
-appetizerBlock = document.getElementById('appetizer'),
-appInfo = document.getElementById('app-info'),
-appIngredients = document.getElementById('app-ingredients'),
-appLink = document.getElementById('app-link'),
-viewApp = document.getElementById('view-app'),
-appPic = document.getElementById('app-pic'),
-
-//entree//
-entreeBlock = document.getElementById('entree'),
-entreeInfo = document.getElementById('entree-info'),
-entreeIngredients = document.getElementById('entree-ingredients'),
-entreeLink = document.getElementById('entree-link'),
-viewEnt = document.getElementById('view-ent'),
-entreePic = document.getElementById('entree-pic'),
-
-//dessert//
-dessertBlock = document.getElementById('dessert'),
-dessertInfo = document.getElementById('dessert-info'),
-dessertIngredients = document.getElementById('dessert-ingredients'),
-dessertLink = document.getElementById('dessert-link'),
-viewDess = document.getElementById('view-dess'),
-dessertPic = document.getElementById('dessert-pic'),
-
 //API endpoint url variables//
 
 yummlyUrl = 'https://api.yummly.com/v1',
