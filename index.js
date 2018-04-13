@@ -1,8 +1,7 @@
 
 //API endpoint url variables//
 
-yummlyUrl = 'https://api.yummly.com/v1',
-edamamUrl = 'https://api.edamam.com/search'; //?q=${inputText}&app_id=fddbf388&app_key=87b9baad36b2f49560c619843a13a7c0';
+yummlyUrl = 'https://api.yummly.com/v1';
 
 // basic templates for each course //
 
@@ -33,7 +32,7 @@ function recipeLink(link, content) {
 // fetch beverage information //
 
 function fetchDrink(inputText) {
-  fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Beverages&requirePictures=true`)
+  fetch(`${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-Beverages&requirePictures=true`)
   .then(res => res.json())
   .then(data => {
       fetchRecipePicture(data.matches[0].id, bevPic, drinkLink);
@@ -48,7 +47,7 @@ function fetchDrink(inputText) {
 //  fetch appetizer information //
 
 function fetchAppetizer(inputText) {
-  fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Appetizers&requirePictures=true`)
+  fetch(`${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-Appetizers&requirePictures=true`)
 .then(res => res.json())
 .then(data => {
     fetchRecipePicture(data.matches[0].id, appPic, appLink);
@@ -61,7 +60,7 @@ function fetchAppetizer(inputText) {
 // fetch entree information //
 
 function fetchEntree(inputText) {
-  fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Main Dishes&requirePictures=true`)
+  fetch(`${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-Main Dishes&requirePictures=true`)
   .then(res => res.json())
   .then(data => {
       fetchRecipePicture(data.matches[0].id, entreePic, entreeLink);
@@ -74,7 +73,7 @@ function fetchEntree(inputText) {
 
 // fetch dessert information //
 function fetchDessert(inputText) {
-  fetch(`${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-Desserts&requirePictures=true`)
+  fetch(`${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-Desserts&requirePictures=true`)
   .then(res => res.json())
   .then(data => {
       fetchRecipePicture(data.matches[0].id, dessertPic, dessertLink);
@@ -86,7 +85,7 @@ function fetchDessert(inputText) {
 
 // fetch big recipe picture //
 function fetchRecipePicture(recipeId, content, linkContent) {
-  fetch(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142`)
+  fetch(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=${secret.id}&_app_key=${secret.key}`)
   .then(res => res.json())
   .then(data => {
     console.log(data);
