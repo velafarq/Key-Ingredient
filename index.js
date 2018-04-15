@@ -40,7 +40,9 @@ function fetchDrink(inputText) {
   fetch(generateURL(inputText, 'Beverages'))
   .then(res => res.json())
   .then(data => {
-      return data;
+    fetchRecipePicture(data.matches[0].id, bevPic, drinkLink);
+    recipeInfo(data.matches[0].recipeName, 'drink-button', drinkInfo);
+    ingredientList(data.matches[0].ingredients, drinkIngredients);
     })
 
   .catch(err => console.log(err));
@@ -49,9 +51,12 @@ function fetchDrink(inputText) {
 //  fetch appetizer information //
 
 function fetchAppetizer(inputText) {
-  fetch(generateURL(inputText, 'Side Dishes'))
-.then(data => {
-    return data;
+  fetch(generateURL(inputText, 'Appetizer'))
+  .then(res => res.json())
+  .then(data => {
+    fetchRecipePicture(data.matches[0].id, appPic, appLink);
+    recipeInfo(data.matches[0].recipeName, 'app-button', appInfo);
+    ingredientList(data.matches[0].ingredients, appIngredients);
   })
 .catch(err => console.log(err));
 }
@@ -62,7 +67,9 @@ function fetchEntree(inputText) {
   fetch(generateURL(inputText, 'Main Dishes'))
   .then(res => res.json())
   .then(data => {
-      return data;
+      fetchRecipePicture(data.matches[0].id, entreePic, entreeLink);
+      recipeInfo(data.matches[0].recipeName, 'entree-button', entreeInfo);
+      ingredientList(data.matches[0].ingredients, entreeIngredients);
     })
   .catch(err => console.log(err));
 }
@@ -72,7 +79,10 @@ function fetchDessert(inputText) {
   fetch(generateURL(inputText, 'Desserts'))
   .then(res => res.json())
   .then(data => {
-      return data;
+      fetchRecipePicture(data.matches[0].id, dessertPic, dessertLink);
+      recipeInfo(data.matches[0].recipeName, 'dessert-button', dessertInfo);
+      ingredientList(data.matches[0].ingredients, dessertIngredients);
+
     })
   .catch(err => console.log(err));
 }
@@ -107,11 +117,9 @@ function getResults(e) {
 
   const bigData = Promise.all([
     fetchDrink(inputText),
-    // fetchAppetizer(inputText),
+    fetchAppetizer(inputText),
     fetchEntree(inputText),
     fetchDessert(inputText),
   ]);
-
-  console.log(bigData);
 
 }
