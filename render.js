@@ -1,25 +1,32 @@
 
 // basic templates for each course //
 
-function recipeInfo(heading, content) {
+function renderRecipeHTML(valueObj, div) {
   let output = '';
+  let ingredientList = valueObj.matches[0].ingredients.map(x => `<li><i class="far fa-star"></i> ${x}</li>`).join(',').replace(/,/g, '');
+
   output += `
-  <div class='recipe-title'>
-  <h3>${heading}<h3>
+  <div class='recipe-info'>
+  <h3>${valueObj.matches[0].recipeName}<h3>
+  <ul>${ingredientList}</ul>
   </div>`;
-  content.innerHTML = output;
+  div.innerHTML = output;
 }
 
-function ingredientList(ingredients, content) {
-  let output = '';
-  output = ingredients.map(x => `<li><i class="far fa-star"></i> ${x}</li>`).join(',').replace(/,/g, '');
-  content.innerHTML = output;
-}
+// // end course templates//
+// function renderMore(valueObj, div, linkDiv) {
+//
+//   const id = valueObj.images[0].imageUrlsBySize['360'];
+//   let output = '';
+//   output += `<img src=${id} class='main-image'>`;
+//   div.innerHTML = output;
+//
+//   //also using this api to fetch the direct link to the recipe, instead of going through yummly//
+//   recipeLink(valueObj.source.sourceRecipeUrl, linkDiv);
+// }
 
-function recipeLink(link, content) {
+function recipeLink(link, linkDiv) {
   let output = `<a href='${link}' target='_blank'>
     View recipe</a>`;
-  content.innerHTML = output;
+  linkDiv.innerHTML = output;
 }
-
-//end course templates//

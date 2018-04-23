@@ -10,59 +10,59 @@ const generateURL = (inputText, category) => {
   return `${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-${category}`;
 }
 
-// fetch beverage information //
-function fetchDrink(inputText) {
-  return fetch(generateURL(inputText, 'Beverages'))
-  .then(res => res.json())
-  .then(data => {
-      fetchRecipePicture(data.matches[0].id, bevPic, drinkLink);
-      recipeInfo(data.matches[0].recipeName, drinkInfo);
-      ingredientList(data.matches[0].ingredients, drinkIngredients);
-    })
-
-  .catch(err => console.log(err));
+//api call//
+const ajaxCall = async url => {
+  try {
+    const res = await fetch(url);
+    return await res.json();
+  }
+  catch (err) {
+    return undefined;
+  }
 };
 
-//  fetch appetizer information //
-
-function fetchAppetizer(inputText) {
-  return fetch(generateURL(inputText, 'Appetizer'))
-  .then(res => res.json())
-  .then(data => {
-    fetchRecipePicture(data.matches[0].id, appPic, appLink);
-    recipeInfo(data.matches[0].recipeName, appInfo);
-    ingredientList(data.matches[0].ingredients, appIngredients);
-
-  })
-.catch(err => console.log(err));
+const callSearchInput = async inputText => {
+  const result = await Promise.all([
+    ajaxCall(generateURL(inputText, 'Beverages')),
+    ajaxCall(generateURL(inputText, 'Appetizer')),
+    ajaxCall(generateURL(inputText, 'Main Dishes')),
+    ajaxCall(generateURL(inputText, 'Desserts')),
+  ]);
+  return await result;
 };
 
-// fetch entree information //
+searchForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  mainArea.style.display = 'flex';
+  const result = await callSearchInput(searchWord.value);
+  result.map((value, index) => {
+    if (index === 0) {
+      renderRecipeHTML(value, drinkInfo);
+       fetchRecipePicture(value.matches[0].id, bevPic, drinkLink);
 
-function fetchEntree(inputText) {
-return fetch(generateURL(inputText, 'Main Dishes'))
-  .then(res => res.json())
-  .then(data => {
-      fetchRecipePicture(data.matches[0].id, entreePic, entreeLink);
-      recipeInfo(data.matches[0].recipeName, entreeInfo);
-      ingredientList(data.matches[0].ingredients, entreeIngredients);
+    }
 
-    })
-  .catch(err => console.log(err));
-};
+    if (index === 1) {
+      renderRecipeHTML(value, appInfo);
+      fetchRecipePicture(value.matches[0].id, appPic, appLink);
+    }
 
-// fetch dessert information //
-function fetchDessert(inputText) {
-  return fetch(generateURL(inputText, 'Desserts'))
-  .then(res => res.json())
-  .then(data => {
-      fetchRecipePicture(data.matches[0].id, dessertPic, dessertLink);
-      recipeInfo(data.matches[0].recipeName, dessertInfo);
-      ingredientList(data.matches[0].ingredients, dessertIngredients);
+    if (index === 2) {
+      renderRecipeHTML(value, entreeInfo);
+      fetchRecipePicture(value.matches[0].id, entreePic, entreeLink);
+    }
 
-    })
-  .catch(err => console.log(err));
-};
+    if (index === 3) {
+      renderRecipeHTML(value, dessertInfo);
+      fetchRecipePicture(value.matches[0].id, dessertPic, dessertLink);
+    }
+  });
+});
+
+// const callRecipeId = async (recipeId, div, linkDiv) => {
+//   const result = await (ajaxCall(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=${secret.id}&_app_key=${secret.key}`));
+//   return await renderMore(`${result}`, div, linkDiv);
+// };
 
 // fetch big recipe picture //
 function fetchRecipePicture(recipeId, content, linkContent) {
@@ -81,21 +81,4 @@ function fetchRecipePicture(recipeId, content, linkContent) {
   .catch(err => console.log(err));
 }
 
-//  run everything on form submission//
-searchForm.addEventListener('submit', getResults);
-
-function getResults(e) {
-  e.preventDefault();
-
-  mainArea.style.display = 'flex';
-
-  let inputText = searchWord.value;
-  searchForm.reset();
-
-  Promise.all([
-    fetchDrink(inputText),
-  fetchAppetizer(inputText),
-  fetchEntree(inputText),
-  fetchDessert(inputText),
-]);
-}
+ // run everything on form submission//
