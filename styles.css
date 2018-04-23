@@ -200,9 +200,13 @@ form {
 
 .recipe-info ul {
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .recipe-info li{
-  font-size: 20px;
+  font-size: 15px;
   font-family: 'Open Sans', sans-serif;
   list-style: none;
   color: #F5EAEB;

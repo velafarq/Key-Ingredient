@@ -38,7 +38,7 @@ searchForm.addEventListener('submit', async e => {
   result.map((value, index) => {
     if (index === 0) {
       renderRecipeHTML(value, drinkInfo);
-       fetchRecipePicture(value.matches[0].id, bevPic, drinkLink);
+      fetchRecipePicture(value.matches[0].id, bevPic, drinkLink);
 
     }
 
