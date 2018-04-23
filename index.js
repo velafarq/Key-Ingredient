@@ -11,12 +11,13 @@ const generateURL = (inputText, category) => {
 }
 
 // fetch beverage information //
-
-const drink = function fetchDrink(inputText) {
-  fetch(generateURL(inputText, 'Beverages'))
+function fetchDrink(inputText) {
+  return fetch(generateURL(inputText, 'Beverages'))
   .then(res => res.json())
   .then(data => {
-      return data;
+      fetchRecipePicture(data.matches[0].id, bevPic, drinkLink);
+      recipeInfo(data.matches[0].recipeName, drinkInfo);
+      ingredientList(data.matches[0].ingredients, drinkIngredients);
     })
 
   .catch(err => console.log(err));
@@ -24,32 +25,40 @@ const drink = function fetchDrink(inputText) {
 
 //  fetch appetizer information //
 
-const appetizer = function fetchAppetizer(inputText) {
-  fetch(generateURL(inputText, 'Appetizer'))
+function fetchAppetizer(inputText) {
+  return fetch(generateURL(inputText, 'Appetizer'))
   .then(res => res.json())
   .then(data => {
-    return data;
+    fetchRecipePicture(data.matches[0].id, appPic, appLink);
+    recipeInfo(data.matches[0].recipeName, appInfo);
+    ingredientList(data.matches[0].ingredients, appIngredients);
+
   })
 .catch(err => console.log(err));
 };
 
 // fetch entree information //
 
-const entree = function fetchEntree(inputText) {
-  fetch(generateURL(inputText, 'Main Dishes'))
+function fetchEntree(inputText) {
+return fetch(generateURL(inputText, 'Main Dishes'))
   .then(res => res.json())
   .then(data => {
-      return data;
+      fetchRecipePicture(data.matches[0].id, entreePic, entreeLink);
+      recipeInfo(data.matches[0].recipeName, entreeInfo);
+      ingredientList(data.matches[0].ingredients, entreeIngredients);
+
     })
   .catch(err => console.log(err));
 };
 
 // fetch dessert information //
-const dessert = function fetchDessert(inputText) {
-  fetch(generateURL(inputText, 'Desserts'))
+function fetchDessert(inputText) {
+  return fetch(generateURL(inputText, 'Desserts'))
   .then(res => res.json())
   .then(data => {
-      return data;
+      fetchRecipePicture(data.matches[0].id, dessertPic, dessertLink);
+      recipeInfo(data.matches[0].recipeName, dessertInfo);
+      ingredientList(data.matches[0].ingredients, dessertIngredients);
 
     })
   .catch(err => console.log(err));
@@ -57,7 +66,7 @@ const dessert = function fetchDessert(inputText) {
 
 // fetch big recipe picture //
 function fetchRecipePicture(recipeId, content, linkContent) {
-  fetch(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=${secret.id}&_app_key=${secret.key}`)
+  return fetch(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=${secret.id}&_app_key=${secret.key}`)
   .then(res => res.json())
   .then(data => {
     const id = data.images[0].imageUrlsBySize['360'];
@@ -83,10 +92,10 @@ function getResults(e) {
   let inputText = searchWord.value;
   searchForm.reset();
 
-  const bigData = Promise.all([
-    drink, appetizer, entree, dessert,
-  ])
-  .then((resultsArr)=> {
-    console.log(resultsArr[0]);
-  });
+  Promise.all([
+    fetchDrink(inputText),
+  fetchAppetizer(inputText),
+  fetchEntree(inputText),
+  fetchDessert(inputText),
+]);
 }

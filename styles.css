@@ -9,8 +9,9 @@
 body {
   padding: 0;
   margin: 0;
+  width: 100vw;
+  height: 100vh;
   font-family: 'Open Sans', sans-serif;
-  /* font-family: 'Montserrat', sans-serif; */
   color: white;
   background-color: #233237;
 
@@ -25,33 +26,33 @@ a:hover{
   color: tomato;
 }
 header {
+  margin: 0;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 box-sizing: border-box;
 background-image: url('tomatoes.jpg');
-background-color: ;
-background-blend-mode: multiply;
-width: 100vw;
-height: 100vh;
 background-position: center;
 background-size: cover;
 background-repeat: no-repeat;
 background-attachment: fixed;
-padding-left: 40px;
-padding-right: 40px;
-padding-top: 40px;
-display: flex;
-flex-direction: column;
+width: 100%;
+height: 100%;
+
 }
 
 
 
 header h1 {
   margin: 0;
-  padding-top: 40vh;
+
   font-family: 'Julius Sans One', sans-serif;
   /* font-family: 'Quicksand', sans-serif; */
   color: white;
-  font-size: 70px;
+  font-size: 13vw;
   letter-spacing: 2px;
+
   font-weight: normal;
   text-transform: uppercase;
 
@@ -60,77 +61,66 @@ header h1 {
 
 header h2 {
   font-family: 'Open Sans', sans-serif;
-  font-weight: normal;
+  font-weight: lighter;
   color: white;
-  padding-left: 30px;
+
   margin-bottom: 100px;
-  size: 60px;
-}
-
-form {
-
+  font-size: 6vw;
 
 }
+
 
 #search-word {
   border-style: none;
-  border: 2px solid #233237;
-  width: 500px;
+  /* border: 2px solid #233237; */
+
   height: 40px;
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   padding-left: 10px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
+
   color:#233237;
+
+}
+
+form {
+  display: flex;
+  justify-content: center;
 
 }
 
 #search-button {
   border-style: none;
-  border-radius: 5px;
-  width: 200px;
+  /* border-radius: 5px; */
+
+  /* width: 200px; */
   height: 40px;
   font-family: 'Quicksand', sans-serif;
   font-size: 20px;
   background-color: #233237;
   color: white;
-  margin-top: 10px;
+
 }
 
 
-@media only screen and (max-width: 650px){
+@media only screen and (min-width: 640px){
   header {
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-
   }
-  header h1{
-    margin: 0;
-    padding: 0;
+
+  header h1 {
+    font-size: 70px;
 
   }
 
-  header h2 {
-
-padding: 0;
-
-  }
-  #search-word {
-width: 100vw;
-height: 80px;
-  }
-
-  #search-button {
-width: 100vw;
-height: 80px
-  }
-  #search-form {
-    padding: 0;
-    margin: 0;
-  }
+header h2 {
+  font-size: 25px;
 }
 
+form {
+  justify-content: flex-start;
+
+}
 /* course display */
 
 #main {
@@ -173,7 +163,6 @@ height: 80px
 }
 .main-image {
 
-
   border-radius: 3px;
 -webkit-box-shadow: 0 0 5px rgba(0,0,0,.0975);
   box-shadow: 0 0 5px rgba(0,0,0,.0975);
@@ -182,24 +171,31 @@ height: 80px
 }
 
 .recipe-title {
-  height: 60px;
+  /* height: 60px; */
   max-width: 360px;
 
 }
 
+
+
 .recipe-title h3 {
   flex-wrap: wrap;
   max-width: 360px;
-  font-weight: normal;
+  font-weight: lighter;
+  font-family: 'Courgette', cursive;
+  color: #F5EAEB;
+  font-size: 30px;
+  text-align: center;
 
-  margin-top: 0;
   padding-top: 0;
+  margin-top: 10px;
 
 }
 
 .recipe-block h2 {
   text-align: center;
   font-weight: normal;
+
 }
 
 .recipe-block ul {
@@ -207,15 +203,10 @@ height: 80px
 }
 .recipe-block li{
   list-style: none;
+  color: #F5EAEB;
 }
 
 .last-block {
   display: flex;
   align-items: flex-end;
 }
-
-#drinkInfo-ingredients.show {
-  display: block
-}
-#drinkInfo-ingredients {
-  display: none;
