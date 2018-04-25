@@ -5,6 +5,9 @@
   font-style: sans-serif;
 }
 
+*:focus {
+    outline: none;
+}
 
 body {
   padding: 0;
@@ -14,6 +17,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: white;
   background-color: #233237;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 
 }
 
@@ -21,6 +26,7 @@ a {
   text-decoration: none;
   color: white;
   font-weight: 600;
+
 }
 a:hover{
   color: tomato;
@@ -37,8 +43,10 @@ background-position: center;
 background-size: cover;
 background-repeat: no-repeat;
 background-attachment: fixed;
-width: 100%;
-height: 100%;
+width: 100vw;
+height: 100vh;
+overflow-y: scroll;
+scroll-behavior: smooth;
 
 }
 
@@ -72,16 +80,15 @@ header h2 {
 
 #search-word {
   border-style: none;
-  /* border: 2px solid #233237; */
-
-  height: 40px;
+  border-bottom: 5px solid #E04943;
   font-family: 'Open Sans', sans-serif;
-  font-size: 20px;
+  font-size: 7vw;
   padding-left: 10px;
-  /* border-radius: 5px; */
 
-  color:#233237;
 
+
+  color: white;
+  background-color: rgba(255,255,255, 0.2);
 }
 
 form {
@@ -91,16 +98,37 @@ form {
 }
 
 #search-button {
-  border-style: none;
-  /* border-radius: 5px; */
 
-  /* width: 200px; */
-  height: 40px;
+  border-style: none;
+  border-bottom: 5px solid #E04943;
+  /* border-right: 5px solid #E04943; */
+
   font-family: 'Quicksand', sans-serif;
-  font-size: 20px;
-  background-color: #233237;
+  font-size: 7vw;
+  background-color: rgba(255,255,255, 0.2);
   color: white;
 
+}
+header section {
+  position: relative;
+}
+
+@keyframes pulse {
+    from {color: #233237;}
+    to {color: #98999B;}
+}
+
+#down-arrow {
+display: none;
+  position: absolute;
+  right: 50vw;
+  bottom: 2px;
+font-size:100px;
+color: #233237;
+  animation-name: pulse;
+  animation-duration: 1s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
 }
 
 
@@ -110,109 +138,121 @@ form {
 
   header h1 {
     font-size: 70px;
-
   }
 
-header h2 {
-  font-size: 25px;
-}
+  header h2 {
+  font-size: 30px;
+  }
 
-form {
+  form {
   justify-content: flex-start;
+  }
 
+  #search-word, #search-button {
+    font-size: 3.5vw;
+  }
 }
 /* course display */
 
+
+.hide {
+   position: absolute !important;
+   top: -9999px !important;
+   left: -9999px !important;
+}
+
 #main {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
   margin-top: 50px;
-  box-sizing: border-box;
-  padding-left: 20px;
-  padding-right: 20px;
-  display: none;
   width: 100vw;
-  /* height: 80vh; */
   justify-content: space-between;
+  align-items: center;
 }
 
-@media only screen and (min-width: 1024px) {
-  #main {
-    flex-direction: row;
-  }
+.recipe-block{
+  width: 100%;
+
 }
-
-@media only screen and (max-width: 1023px){
-  #main {
-    flex-direction: column;
-
-  }
-  #bev-pic, #app-pic, #entree-pic, #dessert-pic {
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-#bev-pic, #app-pic, #entree-pic, #dessert-pic {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  max-height: 100%;
-
-  max-width: 100%;
-
-
+#drink, #appetizer, #entree, #dessert {
+  width: 100%;
 }
 .main-image {
-
-  border-radius: 3px;
--webkit-box-shadow: 0 0 5px rgba(0,0,0,.0975);
-  box-shadow: 0 0 5px rgba(0,0,0,.0975);
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-.recipe-info {
-  /* height: 60px; */
-  max-width: 360px;
+  width: 100%;
 
 }
 
-
-
-.recipe-info h3 {
-  flex-wrap: wrap;
-  max-width: 360px;
-  font-weight: lighter;
-  font-family: 'Courgette', cursive;
-  color: #F5EAEB;
-  font-size: 30px;
-  text-align: center;
-
-  padding-top: 0;
-  margin-top: 10px;
+.title {
+flex-wrap: wrap;
+width: 100%;
+font-weight: lighter;
+font-family: 'Courgette', cursive;
+color: #F5EAEB;
+font-size: 5vw;
+text-align: center;
+padding-top: 0;
+margin-top: 0;
+background-color: #E04943;
 
 }
 
 .recipe-block h2 {
-  text-align: center;
-  font-weight: normal;
+text-align: center;
+font-weight: normal;
+font-size: 6vw;
+background-color: #E04943;
+margin-bottom: 0;
 
 }
 
 .recipe-info ul {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+padding: 0;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 .recipe-info li{
-  font-size: 15px;
-  font-family: 'Open Sans', sans-serif;
-  list-style: none;
-  color: #F5EAEB;
+font-size: 3vw;
+font-family: 'Open Sans', sans-serif;
+list-style: none;
+align-items: center;
+text-align: center;
+justify-content: center;
+color: #F5EAEB;
 }
 
-.last-block {
+.view-recipe {
   display: flex;
-  align-items: flex-end;
+  justify-content: flex-end;
+  margin-right: 20px;
+  font-size: 3.5vw;
+  align-items: center;
+
+}
+@media only screen and (min-width: 1000px) {
+  #main {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.title {
+  font-size: 10px;
+}
+.recipe-block h2 {
+  font-size: 10px;
+}
+.recipe-info li{
+  font-size:10px;
+}
+.view-recipe {
+  font-size: 10px;
+}
 }

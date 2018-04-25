@@ -3,11 +3,11 @@
 
 function renderRecipeHTML(valueObj, div) {
   let output = '';
-  let ingredientList = valueObj.matches[0].ingredients.map(x => `<li><i class="far fa-star"></i> ${x}</li>`).join(',').replace(/,/g, '');
+  let ingredientList = valueObj.matches[0].ingredients.map(x => `<li>${x}</li>`).join(',').replace(/,/g, '');
 
   output += `
   <div class='recipe-info'>
-  <h3>${valueObj.matches[0].recipeName}<h3>
+  <h3 class='title'>${valueObj.matches[0].recipeName}<h3>
   <ul>${ingredientList}</ul>
   </div>`;
   div.innerHTML = output;
@@ -26,7 +26,6 @@ function renderRecipeHTML(valueObj, div) {
 // }
 
 function recipeLink(link, linkDiv) {
-  let output = `<a href='${link}' target='_blank'>
-    View recipe</a>`;
-  linkDiv.innerHTML = output;
+  let output = `<a href='${link}' target='_blank' class='view-recipe'><i class="fas fa-book"></i>&nbsp;View recipe</a>`;
+  linkDiv.insertAdjacentHTML('beforeend', output);
 }

@@ -7,7 +7,7 @@ yummlyUrl = 'https://api.yummly.com/v1';
 
 //genate unique URL for each course in different fetch functions//
 const generateURL = (inputText, category) => {
-  return `${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-${category}`;
+  return `${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-${category}`;
 }
 
 //api call//
@@ -33,28 +33,34 @@ const callSearchInput = async inputText => {
 
 searchForm.addEventListener('submit', async e => {
   e.preventDefault();
-  mainArea.style.display = 'flex';
+
+  mainArea.classList.remove('hide');
+  downArrow.style.display = 'block';
+
+
   const result = await callSearchInput(searchWord.value);
+  searchWord.value = '';
+
   result.map((value, index) => {
     if (index === 0) {
       renderRecipeHTML(value, drinkInfo);
-      fetchRecipePicture(value.matches[0].id, bevPic, drinkLink);
+      fetchRecipePicture(value.matches[0].id, drinkBlock, drinkInfo);
 
     }
 
     if (index === 1) {
       renderRecipeHTML(value, appInfo);
-      fetchRecipePicture(value.matches[0].id, appPic, appLink);
+      fetchRecipePicture(value.matches[0].id, appBlock, appInfo);
     }
 
     if (index === 2) {
       renderRecipeHTML(value, entreeInfo);
-      fetchRecipePicture(value.matches[0].id, entreePic, entreeLink);
+      fetchRecipePicture(value.matches[0].id, entreeBlock, entreeInfo);
     }
 
     if (index === 3) {
       renderRecipeHTML(value, dessertInfo);
-      fetchRecipePicture(value.matches[0].id, dessertPic, dessertLink);
+      fetchRecipePicture(value.matches[0].id, dessertBlock, dessertInfo);
     }
   });
 });
@@ -66,7 +72,7 @@ searchForm.addEventListener('submit', async e => {
 
 // fetch big recipe picture //
 function fetchRecipePicture(recipeId, content, linkContent) {
-  return fetch(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142`)
+  return fetch(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=${secret.id}&_app_key=${secret.key}`)
   .then(res => res.json())
   .then(data => {
     const id = data.images[0].imageUrlsBySize['360'];
@@ -80,5 +86,3 @@ function fetchRecipePicture(recipeId, content, linkContent) {
   })
   .catch(err => console.log(err));
 }
-
- // run everything on form submission//
