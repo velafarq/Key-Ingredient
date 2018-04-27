@@ -7,7 +7,7 @@ yummlyUrl = 'https://api.yummly.com/v1';
 
 //genate unique URL for each course in different fetch functions//
 const generateURL = (inputText, category) => {
-  return `${yummlyUrl}/api/recipes?_app_id=${secret.id}&_app_key=${secret.key}&q=${inputText}&allowedCourse[]=course^course-${category}`;
+  return `${yummlyUrl}/api/recipes?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142&q=${inputText}&allowedCourse[]=course^course-${category}`;
 }
 
 //api call//
@@ -72,7 +72,7 @@ searchForm.addEventListener('submit', async e => {
 
 // fetch big recipe picture //
 function fetchRecipePicture(recipeId, content, linkContent) {
-  return fetch(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=${secret.id}&_app_key=${secret.key}`)
+  return fetch(`${yummlyUrl}/api/recipe/${recipeId}?_app_id=33ff0359&_app_key=c9dbab1cb989f66ccb3e9f085c6fe142`)
   .then(res => res.json())
   .then(data => {
     const id = data.images[0].imageUrlsBySize['360'];
