@@ -6,6 +6,7 @@ const searchWord = $('search-word'),
 searchForm = $('search-form'),
 mainArea = $('main'),
 downArrow = $('down-arrow'),
+footer = $('attribution'),
 
 //drink//
 drinkBlock = $('drink'),
