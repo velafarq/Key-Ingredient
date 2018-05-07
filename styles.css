@@ -119,16 +119,19 @@ header section {
 }
 
 #down-arrow {
-display: none;
+  display: none;
   position: absolute;
-  right: 50vw;
+  cursor: pointer;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%)
   bottom: 2px;
-font-size:100px;
-color: #233237;
+  font-size:100px;
+  color: #233237;
   animation-name: pulse;
   animation-duration: 1s;
-animation-timing-function: linear;
-animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 
