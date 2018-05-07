@@ -124,7 +124,7 @@ header section {
   cursor: pointer;
   left: 50%;
   -webkit-transform: translateX(-50%);
-  transform: translateX(-50%)
+  transform: translateX(-50%);
   bottom: 2px;
   font-size:100px;
   color: #233237;
