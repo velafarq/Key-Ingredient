@@ -14,60 +14,54 @@
 </head>
 <body>
   <!--home page-->
-<header>
-<section>
-  <h1>Key Ingredient</h1>
-  <h2>You pick the ingredient. We inspire the meals.</h2>
-  <form id='search-form'>
-
-      <input type='search' id='search-word' name='q' placeholder='e.g. tomato' autocomplete="off">
-      <a href='#main'<button type='submit' title='Search' id='search-button'><i class="fas fa-search"></i></button></a>
-
-  </form>
-</section>
-  <a href='#main'<i class="fas fa-angle-down" id='down-arrow'></i></a>
-
-
-</header>
-
+  <header role='banner'>
+    <section role='region'>
+      <h1>Key Ingredient</h1>
+      <h2>You pick the ingredient. We inspire the meals.</h2>
+      <form id='search-form'>
+        <input type='search' id='search-word' name='q' placeholder='e.g. tomato' autocomplete="off">
+        <a href='#main'<button type='submit' title='Search' id='search-button'><i class="fas fa-search"></i></button></a>
+      </form>
+    </section>
+    <a href='#main'<i class="fas fa-angle-down" id='down-arrow'></i></a>
+  </header>
 <!-- end home page -->
+
 <!-- area of recipe containers -->
-<main id='main' class='hide' aria-live='assertive'>
+  <main id='main' class='hide' aria-live='assertive' role='main'>
 
+  <!--BEVERAGE -->
+    <section role='region' class='recipe-block'>
+      <h2>BEVERAGE</h2>
+      <div id='drink'></div>
+      <div id='drink-info'></div>
+    </section>
 
-<!--BEVERAGE -->
-  <div class='recipe-block'>
-    <h2>BEVERAGE</h2>
-    <div id='drink'></div>
-    <div id='drink-info'></div>
-  </div>
+  <!--APPETIZER-->
+    <section role='region' class='recipe-block'>
+      <h2>APPETIZER</h2>
+      <div id='appetizer'></div>
+      <div id='app-info'></div>
+    </section>
 
+  <!--ENTREE-->
+    <section role='region' class='recipe-block'>
+      <h2>MAIN DISH</h2>
+      <div id='entree'></div>
+      <div id="entree-info"></div>
+    </section>
 
-<!--APPETIZER-->
-  <div class='recipe-block'>
-    <h2>APPETIZER</h2>
-    <div id='appetizer'></div>
-    <div id='app-info'></div>
-  </div>
+  <!--DESSERT-->
+    <section role='region' class='recipe-block'>
+      <h2>DESSERT</h2>
+      <div id='dessert'></div>
+      <div id="dessert-info"></div>
+    </section>
 
-<!--ENTREE-->
-  <div class='recipe-block'>
-    <h2>MAIN DISH</h2>
-    <div id='entree'></div>
-    <div id="entree-info"></div>
-  </div>
+  </main>
+  <!-- end area of recipe containers -->
 
-<!--DESSERT-->
-  <div class='recipe-block'>
-    <h2>DESSERT</h2>
-    <div id='dessert'></div>
-    <div id="dessert-info"></div>
-  </div>
-
-</main>
-<footer id='attribution'></footer>
-
-<!-- end area of recipe containers -->
+  <footer id='attribution' role='contentinfo'></footer>
 
 <script src='elements.js'></script>
 <script src='index.js'></script>
