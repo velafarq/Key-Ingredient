@@ -19,7 +19,11 @@ function fetchDrink(inputText) {
       fetchRecipePicture(data.matches[0].id, drinkBlock, drinkInfo);
       renderRecipeHTML(data, drinkInfo);
     })
-  .catch(err => console.log(err));
+  .catch(err => {
+      console.log(err);
+      drinkInfo.innerHTML =  `<p>Sorry, no beverages were found matching '${inputText}'. Please try another ingredient.</p>`;
+      drinkBlock.innerHTML =  `<img src='https://images.pexels.com/photos/928854/pexels-photo-928854.jpeg?cs=srgb&dl=close-up-glass-h2o-928854.jpg&fm=jpg' class='main-image'>`;
+    });
 }
 
 //  fetch appetizer information //
@@ -31,7 +35,11 @@ function fetchAppetizer(inputText) {
     fetchRecipePicture(data.matches[0].id, appBlock, appInfo);
     renderRecipeHTML(data, appInfo);
   })
-.catch(err => console.log(err));
+.catch(err => {
+    console.log(err);
+    appInfo.innerHTML =  `<p>Sorry, no appetizers were found matching '${inputText}'. Please try another ingredient.</p>`;
+    appBlock.innerHTML = `<img src='https://images.pexels.com/photos/957508/pexels-photo-957508.jpeg?cs=srgb&dl=baked-goods-bread-delicious-957508.jpg&fm=jpg' class='main-image'>`;
+  });
 }
 
 // fetch entree information //
@@ -43,7 +51,11 @@ function fetchEntree(inputText) {
       fetchRecipePicture(data.matches[0].id, entreeBlock, entreeInfo);
       renderRecipeHTML(data, entreeInfo);
     })
-  .catch(err => console.log(err));
+  .catch(err => {
+      console.log(err);
+      entreeInfo.innerHTML =  `<p>Sorry, no main dishes were found matching '${inputText}'. Please try another ingredient.</p>`;
+      entreeBlock.innerHTML = `<img src='https://images.pexels.com/photos/989690/pexels-photo-989690.jpeg?cs=srgb&dl=abstract-assortment-blur-989690.jpg&fm=jpg' class='main-image'>`;
+    });
 }
 
 // fetch dessert information //
@@ -54,7 +66,11 @@ function fetchDessert(inputText) {
       fetchRecipePicture(data.matches[0].id, dessertBlock, dessertInfo);
       renderRecipeHTML(data, dessertInfo);
     })
-  .catch(err => console.log(err));
+  .catch(err => {
+      console.log(err);
+      dessertInfo.innerHTML =  `<p>Sorry, no desserts were found matching '${inputText}'. Please try another ingredient.</p>`;
+      dessertBlock.innerHTML = `<img src='https://images.pexels.com/photos/372975/pexels-photo-372975.jpeg?cs=srgb&dl=berry-close-up-delicious-372975.jpg&fm=jpg' class='main-image'>`;
+    });
 }
 
 // fetch big recipe picture and original recipe link//

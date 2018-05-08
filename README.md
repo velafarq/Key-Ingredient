@@ -22,7 +22,7 @@ Mobile result view
 
 ## Summary ##
 
-Key Ingredient is a web application that presents the user with a search box which allows the user to type in any ingredient they choose and submit. Upon submission, the ingredient they typed will be used as a keyword to search through the Yummly recipe database to access recipes for a beverage, appetizer, main dish and dessert that all have this common keyword as an ingredient. The purpose is to inspire the user to use an ingredient in a way that they may not have thought of.
+Key Ingredient is a web application that presents the user with a search box which allows the user to type in any ingredient they choose and submit. Upon submission, the ingredient they typed will be used as a keyword to search through the Yummly recipe database to access recipes for a beverage, appetizer, main dish and dessert that all have this keyword as a common ingredient. The purpose is to inspire the user to use an ingredient in a way that they may not have thought of.
 
 ## Built Using ##
 
