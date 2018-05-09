@@ -5,16 +5,16 @@ A web app that allows users to search for a specific ingredient and returns resu
 ## Screenshots ##
 
 Desktop home page view
-![Desktop view of Key Ingredient](desktopview.jpg)
+![Desktop view of Key Ingredient](./assets/images/Key-Ingredient_Desktop_View.png)
 
 Mobile home page view  
-![Mobile view of Key Ingredient](mobileview.jpg)
+![Mobile view of Key Ingredient](./assets/images/Key-Ingredient_Mobile_View.png)
 
 Desktop results view
-![Desktop view of Key Ingredient results](desktopviewresults.jpg)
+![Desktop view of Key Ingredient results](./assets/images/Key-Ingredient_Desktop_Results_View.png)
 
 Mobile result view  
-![Mobile view of Key Ingredient result](mobileviewresults.jpg)
+![Mobile view of Key Ingredient result](./assets/images/Key-Ingredient_Mobile_Result_View.png)
 
 ## Demo ##
 

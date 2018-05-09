@@ -1,0 +1,302 @@
+:root {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-style: sans-serif;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  background-color: #233237;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+a:hover{
+  color: #E04943;
+}
+
+/*Styling for header, which fills the entire viewpoint*/
+header {
+  margin: 0;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  background-image: url('../images/tomatoes.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+header h1 {
+  margin: 0;
+  font-family: 'Julius Sans One', sans-serif;
+  color: white;
+  font-size: 13vw;
+  letter-spacing: 2px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+header h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+  color: white;
+  margin-bottom: 100px;
+  font-size: 6vw;
+}
+
+input[type="search"] {
+     -webkit-appearance: textfield;
+   }
+
+#search-word {
+  border-style: none;
+  border-bottom: 5px solid #E04943;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 7vw;
+  padding-left: 10px;
+  color: white;
+  background-color: rgba(255,255,255, 0.2);
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+#search-button {
+  border-style: none;
+  border-bottom: 5px solid #E04943;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 7vw;
+  background-color: rgba(255,255,255, 0.2);
+  color: white;
+
+}
+/* this is to enable using absulute positioning for the arrow*/
+header section {
+  position: relative;
+}
+/* setting up the animation for the #down-arrow */
+@keyframes pulse {
+    from {color: #233237;}
+    to {color: #98999B;}
+}
+
+#down-arrow {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: 2px;
+  font-size:60px;
+  color: #233237;
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* desktop defaults */
+@media only screen and (min-width: 640px){
+  header h1 {
+    font-size: 70px;
+  }
+
+  header h2 {
+    font-size: 30px;
+  }
+
+  form {
+    justify-content: flex-start;
+  }
+
+  #search-word, #search-button {
+    font-size: 3.5vw;
+  }
+}
+
+
+/* search results */
+
+/* hiding the whole page until the event listener is clicked */
+
+.hide {
+   position: absolute !important;
+   top: -9999px !important;
+   left: -9999px !important;
+}
+
+
+/* flex parent */
+#main {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  margin-top: 50px;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recipe-block {
+  width: 100%;
+}
+
+#drink, #appetizer, #entree, #dessert {
+  width: 100%;
+}
+.main-image {
+  width: 100%;
+}
+
+/* Course title */
+.recipe-block h2 {
+  text-align: center;
+  font-weight: normal;
+  font-size: 6vw;
+  background-color: #E04943;
+  margin-bottom: 0;
+
+}
+
+/* recipe title */
+.title {
+  flex-wrap: wrap;
+  width: 100%;
+  font-weight: lighter;
+  font-family: 'Courgette', cursive;
+  color: #F5EAEB;
+  font-size: 5vw;
+  text-align: center;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/*Ingredient ul and li */
+.recipe-info ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.recipe-info li{
+  font-size: 3vw;
+  font-family: 'Open Sans', sans-serif;
+  list-style: none;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: #F5EAEB;
+}
+
+/* link to view the recipe at its original source*/
+.view-recipe {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+  font-size: 3.5vw;
+  align-items: center;
+
+}
+
+/* desktop defaults */
+@media only screen and (min-width: 860px) {
+  #main {
+    flex-direction: row;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+  }
+
+.recipe-block {
+  margin: 10px;
+}
+
+.main-image {
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,.0975);
+  box-shadow: 0 0 5px rgba(0,0,0,.0975);
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.recipe-info {
+  max-width: 100%;
+}
+
+.recipe-info h3 {
+  flex-wrap: wrap;
+  max-width: 100%;
+  font-weight: lighter;
+  font-family: 'Courgette', cursive;
+  color: #F5EAEB;
+  font-size: 30px;
+  text-align: center;
+  background-color: transparent;
+  padding-top: 0;
+  margin-top: 10px;
+}
+
+.recipe-block h2 {
+  text-align: center;
+  font-weight: normal;
+  font-size: 30px;
+}
+
+.recipe-info ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.recipe-info li{
+  font-size: 15px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.view-recipe {
+  font-size: 20px;
+  justify-content: flex-start;
+  }
+}
+
+/*attribution styling */
+
+.footer-style {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 2px solid #C0C0D0;
+  color: #C0C0D0;
+}
