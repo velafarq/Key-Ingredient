@@ -60,6 +60,7 @@ header h2 {
   font-size: 6vw;
 }
 
+/*removes default input styling for Safari */
 input[type="search"] {
      -webkit-appearance: textfield;
    }
