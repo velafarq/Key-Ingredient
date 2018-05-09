@@ -16,8 +16,7 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: lighter;
+  font-family: 'Raleway', sans-serif;
   color: white;
   background-color: #233237;
 }
@@ -26,10 +25,6 @@ a {
   text-decoration: none;
   color: white;
   font-weight: 600;
-}
-
-a:hover{
-  color: #E04943;
 }
 
 /*Styling for header, which fills the entire viewpoint*/
@@ -52,7 +47,6 @@ header {
 header h1 {
   margin: 0;
   font-family: 'Julius Sans One', sans-serif;
-  color: white;
   font-size: 13vw;
   letter-spacing: 2px;
   font-weight: normal;
@@ -60,9 +54,8 @@ header h1 {
 }
 
 header h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: lighter;
-  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
   margin-bottom: 100px;
   font-size: 6vw;
 }
@@ -73,11 +66,11 @@ input[type="search"] {
 
 #search-word {
   border-style: none;
+  color: white;
+  font-family: 'Raleway', sans-serif;
   border-bottom: 5px solid #E04943;
-  font-family: 'Open Sans', sans-serif;
   font-size: 7vw;
   padding-left: 10px;
-  color: white;
   background-color: rgba(255,255,255, 0.2);
 }
 
@@ -139,7 +132,6 @@ header section {
   }
 }
 
-
 /* search results */
 
 #main {
@@ -192,7 +184,7 @@ header section {
 }
 .recipe-info li{
   font-size: 3vw;
-  font-family: 'Open Sans', sans-serif;
+line-height: 1.6;
   list-style: none;
   align-items: center;
   text-align: center;
@@ -203,11 +195,16 @@ header section {
 /* link to view the recipe at its original source*/
 .view-recipe {
   display: flex;
+  color: #E04943;
   justify-content: flex-end;
   margin-right: 20px;
   font-size: 3.5vw;
   align-items: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
+}
+
+.view-recipe:hover{
+  color: #F5EAEB;
 }
 
 /* desktop defaults */
