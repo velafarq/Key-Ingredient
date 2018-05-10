@@ -38,7 +38,7 @@ function render(data) {
 function error(error) {
   $main
   .append(`
-    <section role='region' class='recipe-block'><img src='https://images.pexels.com/photos/928854/pexels-photo-928854.jpeg?cs=srgb&dl=close-up-glass-h2o-928854.jpg&fm=jpg' class='main-image'>
+    <section role='region' class='recipe-block'><img src='./assets/images/Glass-of-water.jpg' class='main-image'>
     <p>Sorry, no results were found matching your keyword. Please try another ingredient.</p></section>`);
 }
 
