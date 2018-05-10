@@ -21,7 +21,7 @@ function render(data) {
 
     $main.append(`
            <section role='region' class='recipe-block'>
-              <h2>${recipe.attributes.course[0]}</h2>
+              <h2>${data.matches[0].attributes.course[0]}</h2>
               <img src=${recipe.images[0].imageUrlsBySize['360']} class='main-image' alt='${recipe.name}'>
               <div class='recipe-info'>
               <h3 class='title'>${recipe.name}<h3>
